@@ -36,7 +36,6 @@
       overflow-x: hidden;
     }
 
-    /* ── SCREENS ── */
     .screen { display: none; flex-direction: column; min-height: 100dvh; }
     .screen.active { display: flex; }
 
@@ -53,8 +52,52 @@
     .header h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.5px; color: var(--accent); }
     .header-right { font-size: 13px; color: var(--text-dim); text-align: right; line-height: 1.4; }
 
+    /* ── ROUND SETUP ── */
+    .setup-body {
+      flex: 1; padding: 32px 24px;
+      display: flex; flex-direction: column; gap: 28px;
+    }
+    .setup-title { font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+    .setup-subtitle { font-size: 15px; color: var(--text-dim); }
+
+    .field-label {
+      font-size: 12px; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .field-input {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      font-size: 20px; font-weight: 600;
+      padding: 18px 16px;
+      width: 100%;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .field-input:focus { border-color: var(--accent); }
+    .field-input::placeholder { color: var(--text-dim); font-weight: 400; }
+
     /* ── HOME ── */
-    .home-body { flex: 1; padding: 24px 20px; display: flex; flex-direction: column; gap: 20px; }
+    .home-body { flex: 1; padding: 20px 20px; display: flex; flex-direction: column; gap: 16px; }
+
+    .round-info-bar {
+      background: var(--surface);
+      border-radius: 14px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .round-info-main { font-size: 16px; font-weight: 700; }
+    .round-info-sub { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+    .new-round-btn {
+      background: none; border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text-dim);
+      font-size: 12px; padding: 8px 12px; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .new-round-btn:active { border-color: var(--accent); color: var(--accent); }
 
     .hole-bar {
       background: var(--surface);
@@ -73,12 +116,9 @@
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 12px;
-      color: var(--text);
-      font-size: 22px;
+      color: var(--text); font-size: 22px;
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: background 0.1s;
-      user-select: none;
+      cursor: pointer; user-select: none;
     }
     .arrow-btn:active { background: var(--accent-dim); }
 
@@ -91,8 +131,7 @@
     .streak-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
     .streak-dots { display: flex; gap: 8px; flex-wrap: wrap; }
     .streak-dot {
-      width: 36px; height: 36px;
-      border-radius: 50%;
+      width: 36px; height: 36px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 15px; font-weight: 700;
     }
@@ -102,20 +141,14 @@
     .streak-dot.empty { background: var(--surface2); color: var(--text-dim); font-size: 12px; }
 
     .log-btn {
-      background: var(--accent);
-      color: #0f1923;
-      font-size: 22px;
-      font-weight: 800;
-      border: none;
-      border-radius: 20px;
-      padding: 28px 20px;
-      cursor: pointer;
-      letter-spacing: 0.5px;
+      background: var(--accent); color: #0f1923;
+      font-size: 22px; font-weight: 800;
+      border: none; border-radius: 20px;
+      padding: 28px 20px; cursor: pointer;
+      letter-spacing: 0.5px; width: 100%;
       transition: background 0.1s;
-      width: 100%;
     }
     .log-btn:active { background: var(--accent-dim); color: var(--text); }
-    .log-btn:disabled { opacity: 0.4; }
 
     .home-footer { display: flex; justify-content: space-between; padding: 0 4px 32px; }
     .footer-link {
@@ -127,46 +160,35 @@
 
     /* ── LOG FLOW ── */
     .log-body { flex: 1; padding: 24px 20px; display: flex; flex-direction: column; }
-    .step-indicator {
-      display: flex; gap: 8px; margin-bottom: 28px;
-    }
+    .step-indicator { display: flex; gap: 8px; margin-bottom: 28px; }
     .step-pip {
       height: 4px; border-radius: 2px; flex: 1;
-      background: var(--surface2);
-      transition: background 0.2s;
+      background: var(--surface2); transition: background 0.2s;
     }
     .step-pip.done { background: var(--accent); }
     .step-pip.active { background: var(--accent); opacity: 0.5; }
 
     .step-title { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-    .step-value { font-size: 52px; font-weight: 800; margin-bottom: 32px; line-height: 1; }
 
     .num-control { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
     .num-btn {
       width: 72px; height: 72px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      color: var(--text); font-size: 32px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 18px; color: var(--text); font-size: 32px;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; flex-shrink: 0;
     }
     .num-btn:active { background: var(--accent-dim); }
-    .num-display {
-      font-size: 64px; font-weight: 800;
-      flex: 1; text-align: center; line-height: 1;
-    }
+    .num-display { font-size: 64px; font-weight: 800; flex: 1; text-align: center; line-height: 1; }
 
     .next-btn {
       background: var(--accent); color: #0f1923;
       font-size: 18px; font-weight: 700;
       border: none; border-radius: 16px;
       padding: 20px; width: 100%;
-      cursor: pointer; margin-top: auto;
-      transition: background 0.1s;
+      cursor: pointer; margin-top: auto; transition: background 0.1s;
     }
     .next-btn:active { background: var(--accent-dim); color: var(--text); }
-    .next-btn:disabled { opacity: 0.4; }
 
     .back-btn {
       background: none; border: none;
@@ -178,40 +200,27 @@
 
     /* ── CLUBS ── */
     .club-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-bottom: 20px;
     }
     .club-btn {
-      background: var(--surface2);
-      border: 2px solid var(--border);
-      border-radius: 14px;
-      color: var(--text);
+      background: var(--surface2); border: 2px solid var(--border);
+      border-radius: 14px; color: var(--text);
       font-size: 16px; font-weight: 600;
-      padding: 18px 8px;
-      cursor: pointer;
-      text-align: center;
+      padding: 18px 8px; cursor: pointer; text-align: center;
       transition: background 0.1s, border-color 0.1s;
-      min-height: 64px;
-      display: flex; align-items: center; justify-content: center;
+      min-height: 64px; display: flex; align-items: center; justify-content: center;
     }
     .club-btn:active, .club-btn.selected {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-      color: var(--text);
+      background: var(--accent-dim); border-color: var(--accent);
     }
 
     /* ── GRADE ── */
-    .grade-grid {
-      display: flex; flex-direction: column; gap: 16px;
-      margin-top: 8px;
-    }
+    .grade-grid { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
     .grade-btn {
       border: none; border-radius: 20px;
       font-size: 24px; font-weight: 800;
-      padding: 32px 20px;
-      cursor: pointer;
+      padding: 32px 20px; cursor: pointer;
       display: flex; align-items: center; gap: 16px;
       transition: opacity 0.1s;
     }
@@ -238,9 +247,7 @@
     .log-empty { padding: 60px 20px; text-align: center; color: var(--text-dim); font-size: 16px; }
     .log-entry {
       display: flex; align-items: center;
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--border);
-      gap: 12px;
+      padding: 14px 20px; border-bottom: 1px solid var(--border); gap: 12px;
     }
     .log-entry-info { flex: 1; }
     .log-entry-main { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
@@ -256,18 +263,14 @@
 
     .delete-last-btn {
       margin: 20px 20px 0;
-      background: none;
-      border: 1px solid var(--red);
-      border-radius: 12px;
-      color: var(--red);
+      background: none; border: 1px solid var(--red);
+      border-radius: 12px; color: var(--red);
       font-size: 14px; padding: 12px 20px;
       cursor: pointer; width: calc(100% - 40px);
     }
     .delete-last-btn:active { background: rgba(231,76,60,0.15); }
-
     .log-view-footer { padding: 16px 20px 0; }
 
-    /* ── BACK HEADER BTN ── */
     .back-header-btn {
       background: none; border: none;
       color: var(--text-dim); font-size: 15px;
@@ -279,15 +282,44 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════ HOME -->
-<div id="screen-home" class="screen active">
+<!-- ══════════════════════════════════════════════ ROUND SETUP -->
+<div id="screen-setup" class="screen">
   <div class="header">
     <h1>⛳ Shot Log</h1>
-    <div class="header-right">
-      <div id="home-shot-count">0 shots</div>
+  </div>
+  <div class="setup-body">
+    <div>
+      <div class="setup-title">New Round</div>
+      <div class="setup-subtitle">Set up before your first shot</div>
     </div>
+    <div>
+      <div class="field-label">Course Name</div>
+      <input class="field-input" id="setup-course" type="text" placeholder="e.g. Medinah No. 3" autocomplete="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div>
+      <div class="field-label">Date</div>
+      <input class="field-input" id="setup-date" type="date">
+    </div>
+    <button class="next-btn" id="setup-start-btn" style="margin-top:auto">Start Round →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ HOME -->
+<div id="screen-home" class="screen">
+  <div class="header">
+    <h1>⛳ Shot Log</h1>
+    <div class="header-right" id="home-shot-count">0 shots</div>
   </div>
   <div class="home-body">
+
+    <div class="round-info-bar">
+      <div>
+        <div class="round-info-main" id="home-course">—</div>
+        <div class="round-info-sub" id="home-date">—</div>
+      </div>
+      <button class="new-round-btn" id="new-round-btn">New Round</button>
+    </div>
+
     <div class="hole-bar">
       <div>
         <div class="hole-label">Current Hole</div>
@@ -320,10 +352,10 @@
   </div>
   <div class="log-body">
     <div class="step-indicator">
-      <div class="step-pip active" id="pip1"></div>
-      <div class="step-pip" id="pip2"></div>
-      <div class="step-pip" id="pip3"></div>
-      <div class="step-pip" id="pip4"></div>
+      <div class="step-pip active"></div>
+      <div class="step-pip"></div>
+      <div class="step-pip"></div>
+      <div class="step-pip"></div>
     </div>
     <div class="step-title">Hole</div>
     <div class="num-control">
@@ -436,9 +468,14 @@
 </div>
 
 <script>
+  // ─── STORAGE KEYS ────────────────────────────────────────
+  const SHOTS_KEY = 'shotlog_v1';
+  const ROUND_KEY = 'shotlog_round_v1';
+
   // ─── STATE ───────────────────────────────────────────────
-  const STORAGE_KEY = 'shotlog_v1';
-  let shots = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  let shots = JSON.parse(localStorage.getItem(SHOTS_KEY) || '[]');
+  let round  = JSON.parse(localStorage.getItem(ROUND_KEY) || 'null');
+
   let currentHole = 1;
   let pendingHole = 1;
   let pendingShot = 1;
@@ -453,9 +490,8 @@
   ];
 
   // ─── SAVE ────────────────────────────────────────────────
-  function save() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(shots));
-  }
+  function saveShots() { localStorage.setItem(SHOTS_KEY, JSON.stringify(shots)); }
+  function saveRound() { localStorage.setItem(ROUND_KEY, JSON.stringify(round)); }
 
   // ─── SCREENS ─────────────────────────────────────────────
   function show(id) {
@@ -464,12 +500,55 @@
     window.scrollTo(0, 0);
   }
 
+  // ─── SETUP SCREEN ────────────────────────────────────────
+  function todayISO() {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+
+  function openSetup() {
+    document.getElementById('setup-course').value = '';
+    document.getElementById('setup-date').value = todayISO();
+    show('screen-setup');
+  }
+
+  document.getElementById('setup-start-btn').addEventListener('click', () => {
+    const course = document.getElementById('setup-course').value.trim();
+    const date   = document.getElementById('setup-date').value;
+    if (!course) { document.getElementById('setup-course').focus(); return; }
+    round = { course, date };
+    saveRound();
+    shots = [];
+    saveShots();
+    currentHole = 1;
+    updateHome();
+    show('screen-home');
+  });
+
+  document.getElementById('new-round-btn').addEventListener('click', () => {
+    if (shots.length > 0) {
+      if (!confirm('Start a new round? Current round data will be cleared.')) return;
+    }
+    openSetup();
+  });
+
   // ─── HOME ────────────────────────────────────────────────
   function updateHome() {
     document.getElementById('home-hole').textContent = currentHole;
     document.getElementById('home-shot-count').textContent =
       shots.length === 1 ? '1 shot' : `${shots.length} shots`;
+    if (round) {
+      document.getElementById('home-course').textContent = round.course;
+      document.getElementById('home-date').textContent   = formatDate(round.date);
+    }
     renderStreak();
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-');
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${months[parseInt(m)-1]} ${parseInt(d)}, ${y}`;
   }
 
   function renderStreak() {
@@ -500,38 +579,27 @@
 
   document.getElementById('log-shot-btn').addEventListener('click', () => {
     pendingHole = currentHole;
-    // Auto-calc shot number
     const shotsOnHole = shots.filter(s => s.hole === pendingHole).length;
     pendingShot = shotsOnHole + 1;
     pendingClub = null;
-
     document.getElementById('step-hole-num').textContent = pendingHole;
     document.getElementById('step-shot-num').textContent = pendingShot;
     show('screen-hole');
   });
 
   document.getElementById('view-log-btn').addEventListener('click', () => {
-    renderLog();
-    show('screen-log');
+    renderLog(); show('screen-log');
   });
-
   document.getElementById('export-btn').addEventListener('click', exportCSV);
 
   // ─── STEP: HOLE ──────────────────────────────────────────
   document.getElementById('hole-minus').addEventListener('click', () => {
-    if (pendingHole > 1) {
-      pendingHole--;
-      document.getElementById('step-hole-num').textContent = pendingHole;
-    }
+    if (pendingHole > 1) { pendingHole--; document.getElementById('step-hole-num').textContent = pendingHole; }
   });
   document.getElementById('hole-plus').addEventListener('click', () => {
-    if (pendingHole < 18) {
-      pendingHole++;
-      document.getElementById('step-hole-num').textContent = pendingHole;
-    }
+    if (pendingHole < 18) { pendingHole++; document.getElementById('step-hole-num').textContent = pendingHole; }
   });
   document.getElementById('hole-next').addEventListener('click', () => {
-    // Recalc shot number for this hole
     const shotsOnHole = shots.filter(s => s.hole === pendingHole).length;
     pendingShot = shotsOnHole + 1;
     document.getElementById('step-shot-num').textContent = pendingShot;
@@ -542,21 +610,12 @@
 
   // ─── STEP: SHOT # ────────────────────────────────────────
   document.getElementById('shot-minus').addEventListener('click', () => {
-    if (pendingShot > 1) {
-      pendingShot--;
-      document.getElementById('step-shot-num').textContent = pendingShot;
-    }
+    if (pendingShot > 1) { pendingShot--; document.getElementById('step-shot-num').textContent = pendingShot; }
   });
   document.getElementById('shot-plus').addEventListener('click', () => {
-    if (pendingShot < 15) {
-      pendingShot++;
-      document.getElementById('step-shot-num').textContent = pendingShot;
-    }
+    if (pendingShot < 15) { pendingShot++; document.getElementById('step-shot-num').textContent = pendingShot; }
   });
-  document.getElementById('shot-next').addEventListener('click', () => {
-    renderClubs();
-    show('screen-club');
-  });
+  document.getElementById('shot-next').addEventListener('click', () => { renderClubs(); show('screen-club'); });
   document.getElementById('back-from-shot').addEventListener('click', () => show('screen-hole'));
   document.getElementById('back-shot-btn').addEventListener('click', () => show('screen-hole'));
 
@@ -566,13 +625,9 @@
     grid.innerHTML = '';
     CLUBS.forEach(club => {
       const btn = document.createElement('button');
-      btn.className = 'club-btn';
-      if (club === pendingClub) btn.classList.add('selected');
+      btn.className = 'club-btn' + (club === pendingClub ? ' selected' : '');
       btn.textContent = club;
-      btn.addEventListener('click', () => {
-        pendingClub = club;
-        show('screen-grade');
-      });
+      btn.addEventListener('click', () => { pendingClub = club; show('screen-grade'); });
       grid.appendChild(btn);
     });
   }
@@ -585,45 +640,35 @@
     btn.addEventListener('click', () => {
       if (gradeLocked) return;
       gradeLocked = true;
-      const grade = parseInt(btn.dataset.grade);
-      logShot(grade);
+      logShot(parseInt(btn.dataset.grade));
     });
   });
-  document.getElementById('back-from-grade').addEventListener('click', () => {
-    renderClubs();
-    show('screen-club');
-  });
-  document.getElementById('back-grade-btn').addEventListener('click', () => {
-    renderClubs();
-    show('screen-club');
-  });
+  document.getElementById('back-from-grade').addEventListener('click', () => { renderClubs(); show('screen-club'); });
+  document.getElementById('back-grade-btn').addEventListener('click', () => { renderClubs(); show('screen-club'); });
 
   // ─── LOG SHOT ────────────────────────────────────────────
   function logShot(grade) {
-    const shot = {
+    shots.push({
       id: Date.now(),
+      course: round ? round.course : '',
+      date:   round ? round.date   : todayISO(),
       hole: pendingHole,
       shot: pendingShot,
       club: pendingClub,
       grade,
       timestamp: new Date().toISOString()
-    };
-    shots.push(shot);
-    save();
+    });
+    saveShots();
     currentHole = pendingHole;
     updateHome();
 
-    // Show confirm
     const icons = { 1: '🔴', 2: '🟡', 3: '🟢' };
     document.getElementById('confirm-icon').textContent = icons[grade];
     document.getElementById('confirm-detail').textContent =
       `Hole ${pendingHole} · Shot ${pendingShot} · ${pendingClub}`;
     show('screen-confirm');
 
-    setTimeout(() => {
-      gradeLocked = false;
-      show('screen-home');
-    }, 1200);
+    setTimeout(() => { gradeLocked = false; show('screen-home'); }, 1200);
   }
 
   // ─── LOG VIEW ────────────────────────────────────────────
@@ -633,8 +678,7 @@
       el.innerHTML = '<div class="log-empty">No shots logged yet.</div>';
       return;
     }
-    const reversed = [...shots].reverse();
-    el.innerHTML = reversed.map(s => `
+    el.innerHTML = [...shots].reverse().map(s => `
       <div class="log-entry">
         <div class="log-entry-info">
           <div class="log-entry-main">Hole ${s.hole} · Shot ${s.shot} · ${s.club}</div>
@@ -646,42 +690,44 @@
   }
 
   function formatTime(iso) {
-    const d = new Date(iso);
-    return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 
   document.getElementById('back-from-log').addEventListener('click', () => show('screen-home'));
-
   document.getElementById('delete-last-btn').addEventListener('click', () => {
     if (shots.length === 0) return;
     if (confirm('Delete the last logged shot?')) {
-      shots.pop();
-      save();
-      updateHome();
-      renderLog();
+      shots.pop(); saveShots(); updateHome(); renderLog();
     }
   });
 
   // ─── EXPORT ──────────────────────────────────────────────
   function exportCSV() {
     if (shots.length === 0) { alert('No shots logged yet.'); return; }
-    const header = 'hole,shot,club,grade,timestamp';
+    const header = 'date,course,hole,shot,club,grade,timestamp';
     const rows = shots.map(s =>
-      `${s.hole},${s.shot},"${s.club}",${s.grade},${s.timestamp}`
+      `${s.date || ''},"${(s.course || '').replace(/"/g,'""')}",${s.hole},${s.shot},"${s.club}",${s.grade},${s.timestamp}`
     );
     const csv = [header, ...rows].join('\n');
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    const date = new Date().toISOString().slice(0,10);
-    a.download = `shotlog-${date}.csv`;
+    const label = round ? round.date : new Date().toISOString().slice(0,10);
+    a.download = `shotlog-${label}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   }
 
   // ─── INIT ─────────────────────────────────────────────────
-  updateHome();
+  if (!round) {
+    // First time — go to setup
+    document.getElementById('setup-date').value = todayISO();
+    show('screen-setup');
+  } else {
+    updateHome();
+    show('screen-home');
+  }
 </script>
 </body>
 </html>
